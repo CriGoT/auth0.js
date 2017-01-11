@@ -66,7 +66,7 @@ Popup.prototype.authorize = function (options, cb) {
 
   // used by server to render the relay page instead of sending the chunk in the
   // url to the callback
-  params.owp = true;
+  params.owp = !this.baseOptions.popupRedirectUri;
 
   params = this.transactionManager.process(params);
 
@@ -74,7 +74,7 @@ Popup.prototype.authorize = function (options, cb) {
 
   popup = this.getPopupHandler(options);
 
-  relayUrl = urljoin(this.baseOptions.rootUrl, 'relay.html');
+  relayUrl = this.baseOptions.popupRedirectUri || urljoin(this.baseOptions.rootUrl, 'relay.html');
 
   return popup.load(url, relayUrl, {}, responseHandler(cb));
 };
