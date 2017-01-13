@@ -71,6 +71,7 @@ PopupHandler.prototype.load = function (url, relayUrl, options, cb) {
     relay_url: relayUrl,
     window_features: this.stringifyPopupSettings(popupOptions),
     popup: this._current_popup,
+    window_name: '_blank',
     params: options
   };
 
